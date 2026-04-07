@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: unset;
+            padding: unset;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+        }
+        #menu{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid black;
+            width: 600px;
+            height: 800px;
+        }
+        #menu2{
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid black;
+            width: 600px;
+            height: 800px;
+        }
+        #menu3{
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid black;
+            width: 600px;
+            height: 800px;
+        }
+        .loseMenu{
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid black;
+            width: 600px;
+            height: 800px;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+            position: absolute;
+            color: White;
+        }
+        
+        p{
+            font-size: 40px;
+        }
+        .p{
+            font-size: 70px;
+        }
+        .button{
+            font-size: 25px;
+            width: 250px;   
+        }
+        td{
+            border: 2px solid black;
+            width: 30px;
+            height: 30px;
+        }
+        .closed, .mine{
+            background-color: gray;
+        }
+        .opened{
+            background-color: aliceblue;
+        }
+        .openMine{
+            background-color: black;   
+        }
+    </style>
+</head>
+<body>
+    <div id="loseMenu" class="loseMenu"> 
+        <p>Вы проиграли</p>
+        <button class='button'id="menuButton">В меню</button>
+    </div>
+    <div id="menu">
+        <p>MINESWEEPER</p>
+        <button class="button" id="PlayButton">Play</button>
+        <button class="button" id="settings_button">Options</button>
+    </div>
+    <div id="menu2">
+        <p class="p">Options</p>
+        <p>Difficult</p>
+        <fieldset>
+            <div>
+                <input type="radio" id='Easy' name="drone" value="Easy" checked>
+                <label for="Easy">Easy</label>
+            </div>
+            <div>
+                <input type="radio" id='Normal' name="drone" value="Normal">
+                <label for="Normal">Normal</label>
+            </div>
+            <div>
+                <input type="radio" id='Hard' name="drone" value="Hard">
+                <label for="Hard">Hard</label>
+            </div>
+            <button class="button" id="button_back">Back</button>
+        </div>
+    </fieldset>
+    <div id="menu_MINESWEEPER_cansel">
+    </div>
+    <div id="menu3">
+        <table>
+            <tr>
+                <td data-y="1" data-x="1" class="closed"></td>
+                <td data-y="1" data-x="2" class="closed"></td>
+                <td data-y="1" data-x="3" class="closed"></td>
+                <td data-y="1" data-x="4" class="closed"></td>
+                <td data-y="1" data-x="5" class="closed"></td>
+            </tr>
+            <tr>
+                <td data-y="2" data-x="1" class="closed"></td>
+                <td data-y="2" data-x="2" class="closed"></td>
+                <td data-y="2" data-x="3" class="closed"></td>
+                <td data-y="2" data-x="4" class="closed"></td>
+                <td data-y="2" data-x="5" class="closed"></td>
+            </tr>
+            <tr>
+                <td data-y="3" data-x="1" class="closed"></td>
+                <td data-y="3" data-x="2" class="closed"></td>
+                <td data-y="3" data-x="3" class="closed"></td>
+                <td data-y="3" data-x="4" class="closed"></td>
+                <td data-y="3" data-x="5" class="closed"></td>
+            </tr>
+            <tr>
+                <td data-y="4" data-x="1" class="closed"></td>
+                <td data-y="4" data-x="2" class="closed"></td>
+                <td data-y="4" data-x="3" class="closed"></td>
+                <td data-y="4" data-x="4" class="closed"></td>
+                <td data-y="4" data-x="5" class="closed"></td>
+            </tr>
+            <tr>
+                <td data-y="5" data-x="1" class="closed"></td>
+                <td data-y="5" data-x="2" class="closed"></td>
+                <td data-y="5" data-x="3" class="closed"></td>
+                <td data-y="5" data-x="4" class="closed"></td>
+                <td data-y="5" data-x="5" class="closed"></td>
+            </tr>
+            <tr>
+                <td data-y="6" data-x="1" class="closed"></td>
+                <td data-y="6" data-x="2" class="closed"></td>
+                <td data-y="6" data-x="3" class="closed"></td>
+                <td data-y="6" data-x="4" class="closed"></td>
+                <td data-y="6" data-x="5" class="closed"></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+
+        document.getElementById('settings_button').onclick = e => {
+            document.getElementById('menu').style.display = 'none';
+            document.getElementById('menu2').style.display = 'flex';
+        }
+        document.getElementById('button_back').onclick = e => {
+            document.getElementById('menu').style.display = 'flex';
+            document.getElementById('menu2').style.display = 'none';
+        }
+        document.getElementById('PlayButton').onclick = e => {
+            document.getElementById('menu').style.display = 'none';
+            document.getElementById('menu2').style.display = 'none';
+            document.getElementById('menu3').style.display = 'flex';
+        }
+
+       
+        const td = document.querySelectorAll('td');
+        for (i = 0; i < 10; i++){
+            let j = Math.round(Math.random() * 29)
+            td[j].classList = 'mine'
+        }
+        let a = document.querySelectorAll('.mine')
+        td.forEach(el => {
+            el.addEventListener('click', e => {
+                if(el.classList == 'closed'){ 
+                    el.classList = 'opened'
+                }
+                if(el.classList == 'mine'){ 
+                    document.getElementById('loseMenu').style.display = 'flex'
+                    a.forEach(el => {
+                        el.classList = 'openMine'
+                    });
+                    
+                }
+            })
+        })
+        
+        document.getElementById('menuButton').onclick = function(){
+            window.location.reload(true)
+        }
+    </script>
+</body>
+</html>
