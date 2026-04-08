@@ -188,6 +188,7 @@
             el.addEventListener('click', e => {
                 if(el.classList == 'closed'){ 
                     el.classList = 'opened'
+                    console.log(document.querySelectorAll('td[data-x]'))
                 }
                 if(el.classList == 'mine'){ 
                     document.getElementById('loseMenu').style.display = 'flex'
@@ -197,8 +198,10 @@
                     
                 }
             })
+        })//Если забудешь ебись с этим сам
+        document.querySelectorAll('td[data-y]').forEach(button => {
+            document.querySelectorAll('td[data-x]').forEach
         })
-        
         document.getElementById('menuButton').onclick = function(){
             window.location.reload(true)
         }
