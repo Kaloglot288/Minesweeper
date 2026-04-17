@@ -212,17 +212,45 @@
 
                 console.log(document.querySelector(`td[data-x="${x}"][data-y="${y}"]`))
 
-                if(document.querySelector(`td[data-x="${x-1}"][data-y="${y}"]`) == null){}
-                else if(document.querySelector(`td[data-x="${x+1}"][data-y="${y}"]`) == null){}
-                else if(document.querySelector(`td[data-x="${x-1}"][data-y="${y-1}"]`) == null){}
-                else if(document.querySelector(`td[data-x="${x}"][data-y="${y-1}"]`) == null){}
-                else if(document.querySelector(`td[data-x="${x+1}"][data-y="${y-1}"]`) == null){}
-                else if(document.querySelector(`td[data-x="${x-1}"][data-y="${y+1}"]`) == null){}
-                else if(document.querySelector(`td[data-x="${x}"][data-y="${y+1}"]`) == null){}
-                else if(document.querySelector(`td[data-x="${x+1}"][data-y="${y+1}"]`) == null){}
-                
-                if(document.querySelector(`td[data-x="${x-1}"][data-y="${y-1}"]`).classList == 'mine'){
-                    el.innerHTML += 1
+                if(document.querySelector(`td[data-x="${x-1}"][data-y="${y-1}"]`) !== null){
+                    if(document.querySelector(`td[data-x="${x-1}"][data-y="${y-1}"]`).classList == 'mine'){
+                    el.innerHTML ++
+                        }
+                    }
+                if(document.querySelector(`td[data-x="${x}"][data-y="${y-1}"]`) !== null){
+                    if(document.querySelector(`td[data-x="${x}"][data-y="${y-1}"]`).classList == 'mine'){
+                    el.innerHTML ++
+                        }
+                    }
+                if(document.querySelector(`td[data-x="${x+1}"][data-y="${y-1}"]`) !== null){
+                    if(document.querySelector(`td[data-x="${x+1}"][data-y="${y-1}"]`).classList == 'mine'){
+                    el.innerHTML ++
+                        }
+                    }
+                if(document.querySelector(`td[data-x="${x-1}"][data-y="${y}"]`) !== null){
+                    if(document.querySelector(`td[data-x="${x-1}"][data-y="${y}"]`).classList == 'mine'){
+                    el.innerHTML ++
+                        }
+                    }
+                if(document.querySelector(`td[data-x="${x+1}"][data-y="${y}"]`) !== null){
+                    if(document.querySelector(`td[data-x="${x+1}"][data-y="${y}"]`).classList == 'mine'){
+                    el.innerHTML ++
+                        }
+                    }
+                if(document.querySelector(`td[data-x="${x-1}"][data-y="${y+1}"]`) !== null){
+                    if(document.querySelector(`td[data-x="${x-1}"][data-y="${y+1}"]`).classList == 'mine'){
+                    el.innerHTML ++
+                        }
+                    }
+                if(document.querySelector(`td[data-x="${x}"][data-y="${y+1}"]`) !== null){
+                    if(document.querySelector(`td[data-x="${x}"][data-y="${y+1}"]`).classList == 'mine'){
+                    el.innerHTML ++
+                        }
+                    }
+                if(document.querySelector(`td[data-x="${x+1}"][data-y="${y+1}"]`) !== null){
+                    if(document.querySelector(`td[data-x="${x+1}"][data-y="${y+1}"]`).classList == 'mine'){
+                    el.innerHTML ++
+                    }
                 }
                 if(el.classList == 'closed'){ 
                     el.classList = 'opened'
@@ -234,16 +262,8 @@
                         el.classList = 'openMine'
                     });
                 }
-                if(document.querySelectorAll.classList == 'opened'){ 
-                    document.getElementById('NoLoseMenu').style.display = 'flex'
-                    a.forEach(el => {
-                        el.classList = 'openMine'
-                    });
-                }
+
             })
-        })
-        document.querySelectorAll('td[data-x]').forEach(button => {
-            
         })
         document.getElementById('menuButton').onclick = function(){
             window.location.reload(true)
