@@ -99,6 +99,9 @@
         td{
             text-align: center;
         }
+        .flagged{
+            background-color: green;
+        }
     </style>
 </head>
 <body>
@@ -183,7 +186,6 @@
         </table>
     </div>
     <script>
-
         document.getElementById('settings_button').onclick = e => {
             document.getElementById('menu').style.display = 'none';
             document.getElementById('menu2').style.display = 'flex';
@@ -197,10 +199,17 @@
             document.getElementById('menu2').style.display = 'none';
             document.getElementById('menu3').style.display = 'flex';
         }
+        /*
+        const min = 1
+        const max = 29
+        const count = 10
+        const mines = new Set()
+        */
+        const td = document.querySelectorAll('td')
 
-       
-        const td = document.querySelectorAll('td');
         for (i = 0; i < 10; i++){
+            // const randomNum = Math.floor(Math.random() * (max - min + 1)) + min
+            // mines.add(randomNum)
             let j = Math.round(Math.random() * 29)
             td[j].classList = 'mine'
         }
@@ -211,58 +220,43 @@
                 let y = Number(e.currentTarget.dataset.y)
 
                 console.log(document.querySelector(`td[data-x="${x}"][data-y="${y}"]`))
-
-                if(document.querySelector(`td[data-x="${x-1}"][data-y="${y-1}"]`) !== null){
-                    if(document.querySelector(`td[data-x="${x-1}"][data-y="${y-1}"]`).classList == 'mine'){
-                    el.innerHTML ++
+                //Проверка соседей
+                for(i = -1; i < 2; i++){
+                    for(j = -1; j < 2; j++){
+                        if(i == 0 && j == 0) continue
+                        let sosed = document.querySelector(`td[data-x="${x + j}"][data-y="${y + i}"]`)
+                        if (sosed != null && sosed.classList == 'mine'){
+                            el.innerHTML ++
                         }
-                    }
-                if(document.querySelector(`td[data-x="${x}"][data-y="${y-1}"]`) !== null){
-                    if(document.querySelector(`td[data-x="${x}"][data-y="${y-1}"]`).classList == 'mine'){
-                    el.innerHTML ++
-                        }
-                    }
-                if(document.querySelector(`td[data-x="${x+1}"][data-y="${y-1}"]`) !== null){
-                    if(document.querySelector(`td[data-x="${x+1}"][data-y="${y-1}"]`).classList == 'mine'){
-                    el.innerHTML ++
-                        }
-                    }
-                if(document.querySelector(`td[data-x="${x-1}"][data-y="${y}"]`) !== null){
-                    if(document.querySelector(`td[data-x="${x-1}"][data-y="${y}"]`).classList == 'mine'){
-                    el.innerHTML ++
-                        }
-                    }
-                if(document.querySelector(`td[data-x="${x+1}"][data-y="${y}"]`) !== null){
-                    if(document.querySelector(`td[data-x="${x+1}"][data-y="${y}"]`).classList == 'mine'){
-                    el.innerHTML ++
-                        }
-                    }
-                if(document.querySelector(`td[data-x="${x-1}"][data-y="${y+1}"]`) !== null){
-                    if(document.querySelector(`td[data-x="${x-1}"][data-y="${y+1}"]`).classList == 'mine'){
-                    el.innerHTML ++
-                        }
-                    }
-                if(document.querySelector(`td[data-x="${x}"][data-y="${y+1}"]`) !== null){
-                    if(document.querySelector(`td[data-x="${x}"][data-y="${y+1}"]`).classList == 'mine'){
-                    el.innerHTML ++
-                        }
-                    }
-                if(document.querySelector(`td[data-x="${x+1}"][data-y="${y+1}"]`) !== null){
-                    if(document.querySelector(`td[data-x="${x+1}"][data-y="${y+1}"]`).classList == 'mine'){
-                    el.innerHTML ++
-                    }
-                }
+                    }}
+                //Открывание ячеек
                 if(el.classList == 'closed'){ 
                     el.classList = 'opened'
                     console.log(document.querySelectorAll('td[data-x]'))
                 }
+                //Не победа
                 if(el.classList == 'mine'){ 
                     document.getElementById('loseMenu').style.display = 'flex'
                     a.forEach(el => {
                         el.classList = 'openMine'
                     });
                 }
+                
+                el.addEventListener('contextmenu', e => {
+                    e.preventDefault()
+                    console.log('piska')
+                })
 
+                /*
+                function setFlag(el){
+                    if(el.classList.contains !==('opened')) {return}
+                    if(el.classList.contains('flagged')){
+                        el.classList.remove('flagged')
+                    } else {
+                        el.classList = 'closed flagged'
+                    }
+                }
+                */
             })
         })
         document.getElementById('menuButton').onclick = function(){
